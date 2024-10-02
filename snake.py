@@ -12,8 +12,8 @@ verde = (0, 255, 0)
 vermelho = (255, 0, 0)
 
 # Dimensões da tela
-largura, altura = 600, 400
-tela = pygame.display.set_mode((largura, altura))
+width, height = 600, 400
+tela = pygame.display.set_mode((width, height))
 pygame.display.set_caption('Jogo da Cobrinha')
 
 # Parâmetros do jogo
@@ -32,8 +32,8 @@ def jogo():
     game_close = False
 
     # Posição inicial da cobrinha
-    x1 = largura / 2
-    y1 = altura / 2
+    x1 = width / 2
+    y1 = height / 2
     x1_mudar = 0
     y1_mudar = 0
 
@@ -41,15 +41,15 @@ def jogo():
     comprimento_cobra = 1
 
     # Posição da comida
-    comida_x = round(random.randrange(0, largura - tamanho_cobra) / 10.0) * 10.0
-    comida_y = round(random.randrange(0, altura - tamanho_cobra) / 10.0) * 10.0
+    comida_x = round(random.randrange(0, width - tamanho_cobra) / 10.0) * 10.0
+    comida_y = round(random.randrange(0, height - tamanho_cobra) / 10.0) * 10.0
 
     while not game_over:
         while game_close:
             tela.fill(preto)
             fonte = pygame.font.SysFont("comicsansms", 35)
             mensagem = fonte.render("Você perdeu! Pressione C para continuar ou Q para sair.", True, vermelho)
-            tela.blit(mensagem, [largura / 6, altura / 3])
+            tela.blit(mensagem, [width / 6, height / 3])
             pygame.display.update()
 
             for evento in pygame.event.get():
@@ -78,7 +78,7 @@ def jogo():
                     x1_mudar = 0
 
         # Verifica se a cobrinha bateu nas bordas
-        if x1 >= largura or x1 < 0 or y1 >= altura or y1 < 0:
+        if x1 >= width or x1 < 0 or y1 >= height or y1 < 0:
             game_close = True
 
         # Atualiza a posição da cobrinha
@@ -107,8 +107,8 @@ def jogo():
 
         # Verifica se a cobrinha comeu a comida
         if x1 == comida_x and y1 == comida_y:
-            comida_x = round(random.randrange(0, largura - tamanho_cobra) / 10.0) * 10.0
-            comida_y = round(random.randrange(0, altura - tamanho_cobra) / 10.0) * 10.0
+            comida_x = round(random.randrange(0, width - tamanho_cobra) / 10.0) * 10.0
+            comida_y = round(random.randrange(0, height - tamanho_cobra) / 10.0) * 10.0
             comprimento_cobra += 1
 
         # Controla a taxa de quadros
